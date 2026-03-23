@@ -1,0 +1,123 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  date: string;
+  description: string;
+  series?: string;
+  draft?: boolean;
+}
+
+const { title, date, description, series, draft } = Astro.props;
+
+const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+  day: 'numeric', month: 'long', year: 'numeric'
+});
+---
+<Layout title={title} description={description}>
+  <style>
+    .back { color: var(--muted); font-size: 0.85rem; margin-bottom: 2.5rem; display: block; }
+    .back:hover { color: var(--accent); text-decoration: none; }
+
+    .meta {
+      margin-bottom: 2.5rem;
+    }
+
+    .series {
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: var(--font-sans);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      color: var(--text);
+    }
+
+    .date {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .draft-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .content {
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .content h2 {
+      font-family: var(--font-sans);
+      font-size: 1.3rem;
+      margin-top: 2.5rem;
+      color: var(--text);
+    }
+    .content h3 {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+    .content p { margin: 1.25rem 0; }
+    .content code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0.15em 0.4em;
+    }
+    .content pre {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .content pre code { background: none; border: none; padding: 0; }
+    .content blockquote {
+      border-left: 3px solid var(--accent);
+      margin: 1.75rem 0;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  </style>
+
+  <a href="/vera-blog/" class="back">← All posts</a>
+
+  <div class="meta">
+    {series && <div class="series">{series}</div>}
+    <h1>{title}</h1>
+    <div class="date">{formattedDate}</div>
+  </div>
+
+  {draft && (
+    <div class="draft-banner">
+      This post is a stub — full content coming soon.
+    </div>
+  )}
+
+  <div class="content">
+    <slot />
+  </div>
+</Layout>

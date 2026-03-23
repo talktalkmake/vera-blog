@@ -1,0 +1,30 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Clarifying Questions Problem',
+  date: '2026-02-12',
+  series: 'AI Behaviour',
+  description: 'Timeliness is the whole product. Any friction that risks the timing is a product failure.',
+};
+---
+<Post {...meta}>
+
+<p>The first sign that we had a problem was when the bot started asking questions.</p>
+
+<p>"Did you mean the Acme rebrand or the Acme website?" "Which task type was that?" "Can you confirm the date?" Every time it wasn't certain, it came back with a clarifying question. That's reasonable behaviour for a person. For a tool where timeliness is the entire point, it's a failure.</p>
+
+<p>Here's why. Someone sends a message at 4:30pm, between meetings. The bot replies two minutes later asking which project. By then they're in the next meeting. The clarification never comes. The log never gets created. We've just reproduced exactly the problem we were trying to solve — the gap between when work happens and when it gets recorded.</p>
+
+<p>Every question the bot asks is a moment where the entry might not happen. That risk is unacceptable. The whole value of capturing time in Slack is that it happens now, in the moment, without friction. A question introduces friction. Friction kills timeliness. Timeliness is the product.</p>
+
+<hr />
+
+<p>We made a decision: VERA acts, it doesn't fish. If a project name is ambiguous, it returns a clear error and tells you exactly what it needs. You correct it. The entry gets created. One extra message, still resolved in seconds. That's acceptable. An open-ended conversation trailing off into nothing is not.</p>
+
+<p>The harder discipline was stopping VERA from ending responses with a question. "Is there anything else you'd like to log?" "Does that look right?" All of it went. A time entry is a statement. Confirming it is the end of the interaction, not an invitation to continue.</p>
+
+<p>A tool that keeps the conversation open trains people to expect a back-and-forth. That expectation is exactly what makes other time tracking tools slow. We didn't want to recreate it in Slack.</p>
+
+<p>Getting this right took several iterations. The behaviour we ended up with isn't the most natural for a language model, which is conversational by default. But natural for the model and useful for the team are not the same thing. We needed useful.</p>
+
+</Post>

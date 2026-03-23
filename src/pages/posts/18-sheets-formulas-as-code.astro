@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Building the Dashboard the Owner Actually Needs',
+  date: '2026-03-15',
+  series: 'Data Model',
+  description: 'A live dashboard that answers the real questions: which projects are healthy, which are at risk, and what the business earned this month.',
+};
+---
+<Post {...meta}>
+
+<p>Once the data is timely and the two-spreadsheet architecture is in place, the reporting sheet becomes genuinely interesting to build. Not interesting in a technical sense — interesting in the sense that you're answering questions that most agencies currently can't answer at all.</p>
+
+<p>Which retainers are at risk of overrunning before the month ends? Which fixed-price jobs are tracking against their budgets? What is the earned revenue figure right now — not at invoice, but today, based on work actually done? Who are the PMs whose projects are consistently under budget, and who are the ones whose projects are consistently over?</p>
+
+<p>These questions have always existed. What's changed is that the data to answer them is now current, because it's being captured at the moment of doing rather than reconstructed later.</p>
+
+<hr />
+
+<p>Building the dashboards that surface these answers taught us a great deal about the limits of what looks like a simple tool. Google Sheets formulas, used at the level required to join multiple data sources and compute live financial metrics, behave like a programming language — with their own rules about what works and what produces silently wrong results. We learned those rules by breaking them.</p>
+
+<p>The result is a set of ten dashboard tabs, updated live, that give an owner a complete view of their business: project health across every active engagement, retainer burn rates, fixed-price margin, sprint accrual, labour efficiency by team member, and a full export of time entries for any period the finance team needs.</p>
+
+<p>None of it requires a visit to a product. None of it requires an export or a request. It sits in a Google Sheet, open alongside everything else the owner is already looking at, and it is always up to date.</p>
+
+<p>That is the end of the story we set out to tell. Remove the interface. Capture the moment. Make the data trustworthy. And then give the owner a view of their business that reflects reality — not last month's approximation of it.</p>
+
+</Post>

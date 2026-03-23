@@ -1,0 +1,93 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Behind the build: the decisions, trade-offs, and thinking that went into making VERA.' } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} — VERA Build Log</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --bg: #f6f2ec;
+      --surface: #ede8df;
+      --border: #d5ccc1;
+      --text: #1c1815;
+      --muted: #8a7b6e;
+      --accent: #7a5c3c;
+      --font-sans: Georgia, 'Times New Roman', serif;
+      --font-ui: system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    html { background: var(--bg); color: var(--text); font-family: var(--font-ui); }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+    }
+
+    .wordmark {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .tagline {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-style: italic;
+    }
+
+    main {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+      flex: 1;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/vera-blog/" class="wordmark">VERA</a>
+    <span class="tagline">build log</span>
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    Behind the build — decisions, trade-offs, and the thinking that made VERA.
+  </footer>
+</body>
+</html>

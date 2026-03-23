@@ -1,0 +1,26 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Business Was There Last Tuesday Too',
+  date: '2026-02-19',
+  series: 'Infrastructure',
+  description: 'When data is live and timely, the next question is whether you can go back. We built that in from the start.',
+};
+---
+<Post {...meta}>
+
+<p>One question an owner eventually asks, once the data is good, is: what did this look like three weeks ago? Before we brought on that new client. Before we signed the retainer extension. Before the team changed.</p>
+
+<p>Most systems can't answer that question. The current state is all they hold. History is whatever you exported last month, if you exported anything at all.</p>
+
+<p>We solved this at almost no cost. Every night at midnight, VERA creates a named version of the Google Sheet — a snapshot, timestamped, stored in Google Drive. It requires no extra infrastructure, no separate backup system, no manual process. Google Drive's native versioning does the work. We just trigger it on a schedule.</p>
+
+<hr />
+
+<p>The operational benefit is straightforward: if something goes wrong — an entry gets deleted, a column gets accidentally overwritten — the previous night's snapshot is there to restore from. But the business benefit is more interesting.</p>
+
+<p>A timely data system without historical depth is still a point-in-time view. Add snapshots, and it becomes a timeline. The owner can ask what margin looked like on the Acme retainer in November, how the team's hours broke down before a new PM took over a project, where the overrun on a fixed-price job first became visible. Those are management questions, not reporting questions. They require history.</p>
+
+<p>We built this in the same spirit as everything else: with the minimum infrastructure required to deliver real value. No separate database. No backup service. No added complexity. Just a nightly job, a named file, and the ability to go back when you need to.</p>
+
+</Post>

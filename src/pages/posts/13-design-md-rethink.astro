@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Writing It Down Made Us Confront What We\'d Built',
+  date: '2026-03-07',
+  series: 'Architecture',
+  description: 'Six weeks in, we stopped and wrote down every decision we\'d made. Several of them turned out to be wrong.',
+};
+---
+<Post {...meta}>
+
+<p>Six weeks into building VERA, we stopped and wrote a document.</p>
+
+<p>Not a spec — we were past that stage. A reckoning. A record of every architectural decision we'd made, written down clearly enough that someone reading it fresh could understand what the system was and why it was built the way it was. The exercise was intended to produce documentation. What it actually produced was a list of things we needed to change.</p>
+
+<p>Some decisions that had made sense week by week, in isolation, looked wrong when written side by side. We had called certain people "PMs" in the code and "managers" in the product. We had a Project_Users table that tracked who was assigned to a project, but the assignment model had grown complicated enough that the table no longer meant what we thought it meant. We had a concept called "budgets" being used in two different senses — the project-level hours ceiling and the per-person allocation envelope — and the two were entangled in ways that created edge cases.</p>
+
+<hr />
+
+<p>The document — we called it DESIGN.md — forced us to name these things explicitly. And once named, the fixes were obvious.</p>
+
+<p>We renamed PM to manager throughout. We replaced the Project_Users table with a cleaner allocation model. We separated "budget" (project-level) from "allocation" (per-person) and built clear tools for each. We added discipline and employment type to the user model so that the rate calculations could be made correctly for FTEs, contractors, and vendors without special-casing every query.</p>
+
+<p>None of this was glamorous. All of it made the data more accurate. And more accurate data is the only thing that makes the rest of the product worth using.</p>
+
+<p>The lesson: at some point in every build, you have to stop and write down what you've actually made. Not what you intended to make. What you made. The gap between the two is where the problems live.</p>
+
+</Post>

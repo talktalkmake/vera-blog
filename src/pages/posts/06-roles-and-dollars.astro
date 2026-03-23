@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Data Is Only Worth Protecting If It\'s Worth Something',
+  date: '2026-02-17',
+  series: 'Permissions',
+  description: 'When the data is timely and accurate, the financial numbers become real. Real numbers need to reach the right people — and not the wrong ones.',
+};
+---
+<Post {...meta}>
+
+<p>There's a version of this problem that most agencies know well. The owner has a spreadsheet somewhere with the real numbers — margin per project, cost per person, actual versus billed. The project managers never see it. The team never sees it. Not because it's secret for bad reasons, but because the context to read those numbers correctly requires more than most people have.</p>
+
+<p>A billing rate, seen without the cost of the person against it, is just a number. A margin percentage, seen without understanding the project type and contract structure, invites the wrong conclusions. Sharing raw financial data without the right frame creates more confusion than it resolves.</p>
+
+<p>We built three access levels into VERA from the start: owner, manager, and user. Owners see everything — dollar amounts, rates, margins, the full picture. Managers see percentages and project health, without the underlying financials. Users see their own entries and nothing more.</p>
+
+<hr />
+
+<p>This isn't about distrust. It's about giving each person exactly what they can act on.</p>
+
+<p>A project manager who sees that a retainer is at 73% of hours with two weeks left can act on that. They don't need to know the margin to make the right call. A team member who can see their own log can take ownership of it. An owner who can see the real numbers — not estimates, not approximations, but actual time-logged costs against actual contract values — can manage the business.</p>
+
+<p>None of this matters if the underlying data isn't trustworthy. Role-based permissions are only worth having when the numbers behind them are real. That's why the effort to remove logging friction came first. The permission model is downstream of the data quality, not the other way around.</p>
+
+<p>When people log time at the moment it happens, the owner's view of the business reflects what's actually going on. That's the shift. The permissions just make sure it reaches the right people in the right form.</p>
+
+</Post>

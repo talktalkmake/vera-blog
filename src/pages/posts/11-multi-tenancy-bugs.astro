@@ -1,0 +1,24 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Reliability Is the Promise',
+  date: '2026-03-01',
+  series: 'Architecture',
+  description: 'Timeliness only works if the system is there when the moment arrives. Getting multi-tenant reliability right was non-negotiable.',
+};
+---
+<Post {...meta}>
+
+<p>There's a version of timeliness that the product can't control: whether the team actually sends the message when the work happens. There's another version it can control entirely: whether VERA is there to receive it when they do.</p>
+
+<p>When we moved from a single client to multiple clients on the same deployment, we discovered a set of problems that only appear at that scale. Morning briefings arriving twice. One client's crash taking down another client's bot. Scheduled reminders firing for the wrong timezone. None of these are interesting engineering problems. They're just reliability work, and reliability work is not optional when the promise is that the tool is always there.</p>
+
+<p>The morning briefing is the clearest example of why this matters. If someone opens Slack at 9am and their daily summary isn't there, the rhythm breaks. The Two Calls system — the daily check-in and checkout that structures how teams run — depends on the briefing arriving on time. One missed morning and people stop trusting it. Stop trusting it and they stop logging. Stop logging and the data degrades.</p>
+
+<hr />
+
+<p>We fixed the race conditions, isolated client failures from each other, and made the scheduling timezone-aware. None of it was glamorous. All of it was necessary.</p>
+
+<p>The principle behind the effort: everything in the system has to work well enough that nobody notices it working. Timeliness in time capture only has value if the infrastructure behind it is reliable enough to be invisible. The moment someone has to think about whether VERA is up, or whether their morning summary will arrive, is the moment the product has failed.</p>
+
+</Post>

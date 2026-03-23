@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Dashboard Is Always Current',
+  date: '2026-03-13',
+  series: 'Architecture',
+  description: 'The client\'s reporting view and the database are separate spreadsheets. The client can never accidentally break the data — and they never have to request a report.',
+};
+---
+<Post {...meta}>
+
+<p>There's a version of reporting that most agencies still run: someone assembles a deck or a spreadsheet at the end of the month, pulls numbers from various systems, formats it, and sends it to the client or the owner. It takes time, it introduces the possibility of error, and it's a snapshot of a moment that has already passed by the time anyone reads it.</p>
+
+<p>We built VERA to make that process unnecessary.</p>
+
+<p>Every client has two spreadsheets. The first is the database — where VERA reads and writes, where the time entries live, where the project and budget data is stored. The client never touches this sheet. The service account that VERA uses to access Google Sheets has editor access. The client doesn't need any access at all.</p>
+
+<p>The second spreadsheet is the reporting view. This is the one the client — or the owner, or the finance person — actually looks at. It's structured the way they want it. It has the tabs that make sense for their business. And it pulls its data live from the database sheet using Google's IMPORTRANGE function.</p>
+
+<hr />
+
+<p>Because the reporting sheet references the database sheet directly, it's always current. The moment a time entry is logged in Slack, it appears in the database. The moment it appears in the database, it's visible in the reporting sheet. No export, no assembly, no request. The dashboard is live.</p>
+
+<p>The separation also means the two sheets can evolve independently. The client can restructure their reporting view — add a tab, change the layout, rename a column for their audience — without touching the database. And we can update the database schema when the product requires it, without disrupting what the client sees.</p>
+
+<p>This is what "no new interface" looks like for the output side. The owner doesn't visit a product dashboard. They open a Google Sheet they already know, and it tells them what's happening in their business right now.</p>
+
+</Post>

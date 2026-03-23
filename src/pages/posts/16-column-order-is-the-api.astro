@@ -1,0 +1,26 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Invisible Contract in the Spreadsheet',
+  date: '2026-03-12',
+  series: 'Data Model',
+  description: 'Google Sheets doesn\'t enforce its own structure. We had to. The rules we built to keep the data trustworthy.',
+};
+---
+<Post {...meta}>
+
+<p>One of the properties of Google Sheets that makes it useful as a shared data layer is that anyone can edit it. One of the properties of Google Sheets that makes it dangerous as a shared data layer is that anyone can edit it.</p>
+
+<p>VERA reads every sheet by column position. The third column in the Projects sheet is always the client ID. The seventh column in Time Entries is always the hours. There are no column names in the code — just positions. This is fast and it's simple, and it has one unforgiving property: if someone rearranges the columns, the data reads silently and incorrectly. No error. No warning. Just wrong numbers.</p>
+
+<p>We built a protocol to prevent this. It lives in the project documentation and it's enforced by discipline rather than by code: column order is the contract. Adding a column at the end is safe. Inserting one in the middle shifts every subsequent position and breaks every read for that sheet. Renaming a tab breaks every query that references it by name. These are the rules.</p>
+
+<hr />
+
+<p>This sounds like an engineering concern, and it is. But it's also a management concern, because the consequences show up in the owner's view of the business, not in an error log.</p>
+
+<p>The reason we're transparent about this is that it's the cost of the Google Sheets approach — the same approach that means no extra infrastructure, no new logins, no data that's locked away in a system the client can't access. The trade-off is that the sheet has to be treated as a database, not a spreadsheet. That means the structure is fixed, and changes go through a protocol.</p>
+
+<p>In practice, this has never been a problem. The database sheet is not a working document. It's a data layer. The client-facing reporting lives in a separate spreadsheet entirely, which they can structure however they like. The database sheet is managed like a database: you don't move the columns.</p>
+
+</Post>

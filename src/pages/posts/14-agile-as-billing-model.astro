@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Agile as a Billing Model',
+  date: '2026-03-08',
+  series: 'Business Logic',
+  description: 'A sprint is a delivery unit and a revenue recognition unit. Timeliness of logging determines timeliness of revenue — they\'re the same thing.',
+};
+---
+<Post {...meta}>
+
+<p>Agile delivery is widespread in agencies. Agile billing is much rarer, and usually handled badly.</p>
+
+<p>The standard approach is to treat a sprint like a fixed-price job — agree a scope, deliver it, invoice at the end. The problem is that scope changes, sprints slip, and the connection between what was delivered and what gets billed becomes a matter of negotiation rather than data. Someone has to have a conversation about it every time.</p>
+
+<p>We modelled sprints as a distinct project type in VERA, with their own revenue recognition logic. A sprint that is planned — not yet started — carries no revenue. A sprint that is active recognises revenue in proportion to the hours logged against the sprint budget. If 60% of the sprint's hours have been worked, 60% of the sprint's contract value has been earned. The moment hours are logged, they accrue to the revenue line.</p>
+
+<hr />
+
+<p>This model only works if the hours are logged when the work happens.</p>
+
+<p>If a developer does three days' work and logs it all on Friday, the revenue picture for Monday through Wednesday is understated. If the sprint closes and entries get backfilled after the fact, the timing of the accrual is wrong. The financial picture lags the operational reality.</p>
+
+<p>This is the same problem as every other part of the system, expressed in a financial context: timeliness of logging is timeliness of information. When someone tells VERA what they did at the moment they did it, the sprint revenue calculation is current. The owner can look at the P&L on a Wednesday and see what has actually been earned — not what was earned as of last Friday's batch.</p>
+
+<p>That real-time view of earned revenue is something almost no agency currently has. Getting it requires only one thing: that hours get recorded when they happen.</p>
+
+</Post>

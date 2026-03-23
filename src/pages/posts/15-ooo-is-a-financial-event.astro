@@ -1,0 +1,26 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Absence Is Data Too',
+  date: '2026-03-08',
+  series: 'Business Logic',
+  description: 'Time off is a cost. If it doesn\'t appear in the same system as time worked, the capacity picture is wrong and the P&L is incomplete.',
+};
+---
+<Post {...meta}>
+
+<p>One of the things agencies consistently undercount is the cost of time off.</p>
+
+<p>Not in payroll — most have that right. In the project picture. When someone is out for a day, the projects they were working on still existed that day. The retainer still ran. The sprint hours still need to be accounted for. If that absence isn't recorded in the same place as the rest of the time data, the capacity picture is wrong and the numbers don't reconcile.</p>
+
+<p>The typical workaround is a calendar. Someone books holiday in Google Calendar. The project manager checks the calendar when doing resource planning. There's no connection between that and the time data. The team member who was out for three days doesn't appear in the weekly log, but there's no entry that explains why — it just looks like three days of no work.</p>
+
+<hr />
+
+<p>In VERA, time off goes through an approval flow and lands as a logged entry. A team member requests the day in Slack. The manager approves it. VERA creates an entry against the relevant OOO project, adjusts the team member's available capacity for that period, and posts to the audit channel. The absence is visible in the same data as the rest of the week.</p>
+
+<p>This matters for two reasons. First, the capacity picture for resource planning is accurate — if someone is out, that shows up when you query who's available. Second, the owner can see the true cost of absence in the same report as everything else. A day of sick leave or PTO is a day of salary with no corresponding revenue. That's not a criticism — it's a fact about how the business works, and it should be visible.</p>
+
+<p>The insight here is the same as everything else we built: if it happens in the business, it needs to be in the data. Absence is as real as work. It should take up the same space.</p>
+
+</Post>

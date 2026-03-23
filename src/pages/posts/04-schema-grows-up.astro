@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Making a Slack Message Do the Work of a Form',
+  date: '2026-02-12',
+  series: 'Data Model',
+  description: 'We removed the interface. That meant every piece of information the owner needed had to be captured from a casual Slack message without making that message any harder to send.',
+};
+---
+<Post {...meta}>
+
+<p>Removing the interface doesn't remove the requirement for the data. The owner still needs to know which project, which task, how many hours, who did the work, and when. A form would have asked for all of this explicitly. We had to get it from a Slack message without asking.</p>
+
+<p>The first version of VERA stored everything in a flat log: a date, a person, a project name, and some hours. That was enough to prove the idea worked. It wasn't enough to be useful.</p>
+
+<p>The problem showed up quickly. If someone logged time to "Acme" and someone else logged time to "Acme Rebrand" and a third person used "Acme — Website," the numbers never added up cleanly. Without a canonical list of project names, the data fragmented. And fragmented data is just as useless as no data.</p>
+
+<p>So projects became first-class objects. Each project had an ID, a canonical name, a client, a status, a type. VERA knew the list. If you said "Acme," it matched to the right record — or returned an error if it couldn't. No more free-text project names living in a log.</p>
+
+<hr />
+
+<p>Tasks followed the same logic. "Design" meant something different on different projects. Making tasks objects — with their own IDs, their own billability flags, their own project-level configurations — meant the message "3h on Acme, design" could carry full meaning without requiring the person to specify anything extra.</p>
+
+<p>The schema grew in direct response to the questions the owner was asking. Every time there was something the data couldn't answer — which client is this project for? which type of work? is this billable? — we added the structure to capture it, and we made sure VERA could derive it from how people were already talking.</p>
+
+<p>The interface stayed the same throughout: a Slack message. The intelligence behind it grew to match everything a PM or owner would need to see on the other end.</p>
+
+</Post>

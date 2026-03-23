@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Day One: Slack → Claude → Google Sheets',
+  date: '2026-02-10',
+  series: 'Origins',
+  description: 'The three components we chose on day one — and why each one was chosen specifically because it required no new interface.',
+};
+---
+<Post {...meta}>
+
+<p>If the interface is the problem, you can't solve it by building a better interface. You have to find something that already exists in the workflow and use that instead.</p>
+
+<p>For us, that was Slack. Every team we'd worked with was already in it, all day, for everything else. It was already open when work happened. It was already where questions got asked and decisions got made. The only question was whether it could also be where time got recorded — without any extra ceremony.</p>
+
+<p>Google Sheets was the same logic applied to the data side. We could have built a database. We chose not to. A database would have meant a new interface for the client to access it, a new system to maintain, a new login to manage. Google Sheets is already there. Every client uses it. The finance person can look at it without calling us. The ops lead can check it without asking for an export. The data lives where people already go to read data.</p>
+
+<p>Claude is what makes the Slack message work without a rigid syntax. We needed something that could understand "3 hours Acme rebrand, copy" and "can you log three hours against the Acme project for copywriting this morning" as the same instruction. A command parser would have required people to learn the format — which is just a lighter version of the same interface problem. A language model means the system adapts to how people already talk.</p>
+
+<hr />
+
+<p>Three components. None of them required anyone to learn anything new. Slack was already open. Sheets was already shared. Claude understood natural language.</p>
+
+<p>The only new thing was the connection between them — and the intelligence about what to do with the message once it arrived. That's where the work actually lived. Not in the interface, because we didn't build one. In the behaviour.</p>
+
+<p>It took less than a day to get the first version working. We have never regretted the choices we made that day.</p>
+
+</Post>

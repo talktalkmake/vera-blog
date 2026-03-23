@@ -1,0 +1,34 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Problem That Made VERA Necessary',
+  date: '2026-02-10',
+  series: 'Origins',
+  description: 'Every time tracking tool ever built starts from the wrong assumption. We found the one thing that fixes it.',
+};
+---
+<Post {...meta}>
+
+<p>Every time tracking tool we had ever used started from the same assumption: that logging time is a task you do at a scheduled moment. Open the app. Find the project. Fill in the hours. Save.</p>
+
+<p>That assumption is wrong, and it's the reason the data in almost every agency we've worked with is bad.</p>
+
+<p>The problem isn't discipline. It isn't that project managers don't care, or that teams are careless. It's that the interface creates a gap between when the work happens and when it gets recorded. And in that gap, the truth gets lost. Hours get rounded. Tasks get batched under whichever project name seems close enough. Entries get backfilled on a Friday from a week's worth of half-remembered work.</p>
+
+<p>That's the data the owner is reading at the end of the month. That's what gets reconciled against the invoice. That's what the project manager is using to decide whether a retainer is healthy or a fixed-price job is on track.</p>
+
+<p>We've watched this happen in agencies of every size, across every discipline. The problem is structural: the tool requires ceremony at exactly the moment when people have none to give.</p>
+
+<hr />
+
+<p>The insight that led to VERA was simple. If the interface is the problem, remove it.</p>
+
+<p>Don't ask people to visit a system to record what they just did. Put the recording where the work already lives — in Slack, in the conversation, in the moment. Make it a message, not a form.</p>
+
+<p>When logging takes five seconds and requires no context-switching, people do it closer to when the work actually happened. Not at the end of the day. Not at the end of the week. Now, while it's fresh.</p>
+
+<p>That timeliness is the unlock. It's what makes the data trustworthy. And trustworthy data is what makes everything else possible: the burn rate that reflects reality, the retainer health that isn't a month-end surprise, the P&L that the owner can actually act on.</p>
+
+<p>The rest of this log is the story of how we built it.</p>
+
+</Post>

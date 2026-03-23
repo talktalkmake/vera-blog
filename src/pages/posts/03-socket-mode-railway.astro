@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Deployment That Didn\'t Require a Web App',
+  date: '2026-02-11',
+  series: 'Infrastructure',
+  description: 'We needed to deploy without adding anything to the client\'s stack. Socket Mode and Railway made that possible for almost nothing.',
+};
+---
+<Post {...meta}>
+
+<p>One of the decisions we made early — and felt the benefit of immediately — was to never build a web app.</p>
+
+<p>A web app would have meant a URL for the client to visit, a login to manage, a session to maintain, a UI to design and maintain and explain. It would have meant recreating the very ceremony we were trying to eliminate, just with a different front end.</p>
+
+<p>Slack's Socket Mode is what made this possible to avoid. Instead of a public webhook URL that Slack pushes events to — which requires a server with a publicly accessible address, SSL certificates, DNS, the whole stack — Socket Mode opens a persistent outbound connection from the bot to Slack. No public URL. No incoming ports. The bot talks to Slack; Slack doesn't need to talk back to the bot.</p>
+
+<p>That meant we could run the entire thing on Railway, a hosting platform that takes a Node process and runs it for a few dollars a month. No load balancers. No server configuration. No devops overhead. Push the code, it runs.</p>
+
+<hr />
+
+<p>The cost matters here, but not for the reason you might expect. The reason it matters is that a cheap, simple deployment means we never needed to justify the infrastructure. There's no server to manage, no database to provision, no uptime SLA to worry about. The whole thing is a process that runs and connects to Slack and reads from Google Sheets.</p>
+
+<p>Simplicity at the infrastructure level meant we could spend all of our time on the behaviour — on making VERA useful. Not on the plumbing.</p>
+
+<p>The entire product, deployed and running for clients, costs less than a lunch every month. That's not a compromise. That's a design principle.</p>
+
+</Post>

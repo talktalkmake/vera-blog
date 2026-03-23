@@ -1,0 +1,26 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Each Client Gets Their Own VERA',
+  date: '2026-02-25',
+  series: 'Architecture',
+  description: 'Multi-tenancy wasn\'t a feature request. It was the point. A tool that feels shared feels like someone else\'s.',
+};
+---
+<Post {...meta}>
+
+<p>Early on it was clear that VERA couldn't be a shared system with a login. That would have made it a product — a SaaS platform with an interface you visit — which is exactly what we were trying not to build.</p>
+
+<p>Every client needed their own VERA. Their own Slack bot, living in their workspace, knowing their projects, their people, their rates. Not a tenant in someone else's system. Their system.</p>
+
+<p>Practically, this meant that every message VERA receives from a Slack workspace arrives with the identity of that client baked in. The bot knows which Google Sheet to read, which credentials to use, which timezone the team is in, which channel to post audit entries to. None of that is shared with any other client. None of it could accidentally cross.</p>
+
+<hr />
+
+<p>The architecture to make this work is invisible to the people using it, which is the point. From the team's perspective, VERA is just there — in their Slack, responding to their messages, knowing their context. They don't think about tenants or credentials or configuration. They tell VERA what they did and VERA records it.</p>
+
+<p>From the owner's perspective, the sheet is theirs. The data belongs to their business. They can share it with their accountant, their finance person, their CFO. They don't need to export anything or log in anywhere. It's a Google Sheet.</p>
+
+<p>We could have built a multi-client dashboard with logins and workspaces and user management. That would have been an interface. We built a bot that already knows who it's talking to. That's not the same thing.</p>
+
+</Post>

@@ -1,6 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+/**
+ * URL PERMANENCE — READ BEFORE EDITING
+ *
+ * Once a post is published, its slug and filename are permanent.
+ * The filename is the URL: 17-two-spreadsheets.astro → /vera-blog/posts/17-two-spreadsheets/
+ * Breaking the filename breaks every link to that post.
+ *
+ * Safe: edit content, change title/description in frontmatter.
+ * Never: rename a file, change a slug here, renumber existing posts, delete a post.
+ * New posts: always use the next number after the current highest (currently 18).
+ * Redirects: if a URL ever must change, create a static HTML redirect at the old path.
+ */
 const posts = [
   {
     slug: '01-the-problem',

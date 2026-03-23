@@ -1,0 +1,25 @@
+// Shared post registry -- single source of truth for index.astro and Post.astro.
+//
+// URL PERMANENCE: slug = filename = URL. Never rename, renumber, or delete.
+// New posts: append to this array with the next sequential number.
+
+export const posts = [
+  { slug: "01-the-problem", date: "2026-02-10", series: "Origins", title: "The Problem That Made VERA Necessary", description: "Every time tracking tool starts from the wrong assumption. We found the one thing that fixes it." },
+  { slug: "02-day-one-slack-claude-sheets", date: "2026-02-10", series: "Origins", title: "Day One: Slack to Claude to Google Sheets", description: "The three components we chose on day one -- each picked specifically because it required no new interface." },
+  { slug: "03-socket-mode-railway", date: "2026-02-11", series: "Infrastructure", title: "The Deployment That Didn't Require a Web App", description: "We needed to deploy without adding anything to the client's stack. Socket Mode and Railway made that possible for almost nothing." },
+  { slug: "04-schema-grows-up", date: "2026-02-12", series: "Data Model", title: "Making a Slack Message Do the Work of a Form", description: "We removed the interface. That meant every piece of information the owner needed had to come from a casual Slack message without making it any harder to send." },
+  { slug: "05-prompt-engineering-wars", date: "2026-02-12", series: "AI Behaviour", title: "The Clarifying Questions Problem", description: "Timeliness is the whole product. Any friction that risks the timing is a product failure." },
+  { slug: "06-roles-and-dollars", date: "2026-02-17", series: "Permissions", title: "The Data Is Only Worth Protecting If It's Worth Something", description: "When the data is timely and accurate, the financial numbers become real. Real numbers need to reach the right people -- and not the wrong ones." },
+  { slug: "07-retainers-are-weird", date: "2026-02-19", series: "Business Logic", title: "Retainers Without Timely Data Are Just Guesses", description: "A retainer is a commitment to deliver a volume of work within a period. If you don't know where you are until the invoice, you've already lost." },
+  { slug: "08-snapshots-version-control-spreadsheet", date: "2026-02-19", series: "Infrastructure", title: "The Business Was There Last Tuesday Too", description: "When data is live and timely, the next question is whether you can go back. We built that in from the start." },
+  { slug: "09-timebot-becomes-vera", date: "2026-02-22", series: "Origins", title: "TimeBot Becomes VERA", description: "A name signals a relationship. We weren't building a utility." },
+  { slug: "10-multi-tenancy", date: "2026-02-25", series: "Architecture", title: "Each Client Gets Their Own VERA", description: "Multi-tenancy wasn't a feature request. It was the point. A tool that feels shared feels like someone else's." },
+  { slug: "11-multi-tenancy-bugs", date: "2026-03-01", series: "Architecture", title: "Reliability Is the Promise", description: "Timeliness only works if the system is there when the moment arrives. Getting multi-tenant reliability right was non-negotiable." },
+  { slug: "12-phased-expansion", date: "2026-03-03", series: "Features", title: "What Becomes Possible When the Data Is Real", description: "Once time tracking is accurate and timely, a layer of project intelligence that was previously impossible becomes straightforward." },
+  { slug: "13-design-md-rethink", date: "2026-03-07", series: "Architecture", title: "Writing It Down Made Us Confront What We'd Built", description: "Six weeks in, we stopped and wrote down every decision we'd made. Several of them turned out to be wrong." },
+  { slug: "14-agile-as-billing-model", date: "2026-03-08", series: "Business Logic", title: "Agile as a Billing Model", description: "A sprint is a delivery unit and a revenue recognition unit. Timeliness of logging determines timeliness of revenue -- they're the same thing." },
+  { slug: "15-ooo-is-a-financial-event", date: "2026-03-08", series: "Business Logic", title: "Absence Is Data Too", description: "Time off is a cost. If it doesn't appear in the same system as time worked, the capacity picture is wrong and the P&L is incomplete." },
+  { slug: "16-column-order-is-the-api", date: "2026-03-12", series: "Data Model", title: "The Invisible Contract in the Spreadsheet", description: "Google Sheets doesn't enforce its own structure. We had to. The rules we built to keep the data trustworthy." },
+  { slug: "17-two-spreadsheets", date: "2026-03-13", series: "Architecture", title: "The Dashboard Is Always Current", description: "The client's reporting view and the database are separate spreadsheets. The client can never accidentally break the data -- and they never have to request a report." },
+  { slug: "18-sheets-formulas-as-code", date: "2026-03-15", series: "Data Model", title: "Building the Dashboard the Owner Actually Needs", description: "A live dashboard that answers the real questions: which projects are healthy, which are at risk, and what the business earned this month." },
+];

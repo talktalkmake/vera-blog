@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { posts } from '../data/posts.js';
 
 /**
  * URL PERMANENCE — READ BEFORE EDITING
@@ -10,151 +11,17 @@ import Layout from '../layouts/Layout.astro';
  *
  * Safe: edit content, change title/description in frontmatter.
  * Never: rename a file, change a slug here, renumber existing posts, delete a post.
- * New posts: always use the next number after the current highest (currently 18).
+ * New posts: always append to src/data/posts.js with the next sequential number.
  * Redirects: if a URL ever must change, create a static HTML redirect at the old path.
  */
-const posts = [
-  {
-    slug: '01-the-problem',
-    date: '2026-02-10',
-    series: 'Origins',
-    title: 'The Problem That Made VERA Necessary',
-    description: 'Every time tracking tool starts from the wrong assumption. We found the one thing that fixes it.',
-  },
-  {
-    slug: '02-day-one-slack-claude-sheets',
-    date: '2026-02-10',
-    series: 'Origins',
-    title: 'Day One: Slack → Claude → Google Sheets',
-    description: 'The three components we chose on day one — each picked specifically because it required no new interface.',
-  },
-  {
-    slug: '03-socket-mode-railway',
-    date: '2026-02-11',
-    series: 'Infrastructure',
-    title: 'The Deployment That Didn\'t Require a Web App',
-    description: 'We needed to deploy without adding anything to the client\'s stack. Socket Mode and Railway made that possible for almost nothing.',
-  },
-  {
-    slug: '04-schema-grows-up',
-    date: '2026-02-12',
-    series: 'Data Model',
-    title: 'Making a Slack Message Do the Work of a Form',
-    description: 'We removed the interface. That meant every piece of information the owner needed had to come from a casual Slack message without making it any harder to send.',
-  },
-  {
-    slug: '05-prompt-engineering-wars',
-    date: '2026-02-12',
-    series: 'AI Behaviour',
-    title: 'The Clarifying Questions Problem',
-    description: 'Timeliness is the whole product. Any friction that risks the timing is a product failure.',
-  },
-  {
-    slug: '06-roles-and-dollars',
-    date: '2026-02-17',
-    series: 'Permissions',
-    title: 'The Data Is Only Worth Protecting If It\'s Worth Something',
-    description: 'When the data is timely and accurate, the financial numbers become real. Real numbers need to reach the right people — and not the wrong ones.',
-  },
-  {
-    slug: '07-retainers-are-weird',
-    date: '2026-02-19',
-    series: 'Business Logic',
-    title: 'Retainers Without Timely Data Are Just Guesses',
-    description: 'A retainer is a commitment to deliver a volume of work within a period. If you don\'t know where you are until the invoice, you\'ve already lost.',
-  },
-  {
-    slug: '08-snapshots-version-control-spreadsheet',
-    date: '2026-02-19',
-    series: 'Infrastructure',
-    title: 'The Business Was There Last Tuesday Too',
-    description: 'When data is live and timely, the next question is whether you can go back. We built that in from the start.',
-  },
-  {
-    slug: '09-timebot-becomes-vera',
-    date: '2026-02-22',
-    series: 'Origins',
-    title: 'TimeBot Becomes VERA',
-    description: 'A name signals a relationship. We weren\'t building a utility.',
-  },
-  {
-    slug: '10-multi-tenancy',
-    date: '2026-02-25',
-    series: 'Architecture',
-    title: 'Each Client Gets Their Own VERA',
-    description: 'Multi-tenancy wasn\'t a feature request. It was the point. A tool that feels shared feels like someone else\'s.',
-  },
-  {
-    slug: '11-multi-tenancy-bugs',
-    date: '2026-03-01',
-    series: 'Architecture',
-    title: 'Reliability Is the Promise',
-    description: 'Timeliness only works if the system is there when the moment arrives. Getting multi-tenant reliability right was non-negotiable.',
-  },
-  {
-    slug: '12-phased-expansion',
-    date: '2026-03-03',
-    series: 'Features',
-    title: 'What Becomes Possible When the Data Is Real',
-    description: 'Once time tracking is accurate and timely, a layer of project intelligence that was previously impossible becomes straightforward.',
-  },
-  {
-    slug: '13-design-md-rethink',
-    date: '2026-03-07',
-    series: 'Architecture',
-    title: 'Writing It Down Made Us Confront What We\'d Built',
-    description: 'Six weeks in, we stopped and wrote down every decision we\'d made. Several of them turned out to be wrong.',
-  },
-  {
-    slug: '14-agile-as-billing-model',
-    date: '2026-03-08',
-    series: 'Business Logic',
-    title: 'Agile as a Billing Model',
-    description: 'A sprint is a delivery unit and a revenue recognition unit. Timeliness of logging determines timeliness of revenue — they\'re the same thing.',
-  },
-  {
-    slug: '15-ooo-is-a-financial-event',
-    date: '2026-03-08',
-    series: 'Business Logic',
-    title: 'Absence Is Data Too',
-    description: 'Time off is a cost. If it doesn\'t appear in the same system as time worked, the capacity picture is wrong and the P&L is incomplete.',
-  },
-  {
-    slug: '16-column-order-is-the-api',
-    date: '2026-03-12',
-    series: 'Data Model',
-    title: 'The Invisible Contract in the Spreadsheet',
-    description: 'Google Sheets doesn\'t enforce its own structure. We had to. The rules we built to keep the data trustworthy.',
-  },
-  {
-    slug: '17-two-spreadsheets',
-    date: '2026-03-13',
-    series: 'Architecture',
-    title: 'The Dashboard Is Always Current',
-    description: 'The client\'s reporting view and the database are separate spreadsheets. The client can never accidentally break the data — and they never have to request a report.',
-  },
-  {
-    slug: '18-sheets-formulas-as-code',
-    date: '2026-03-15',
-    series: 'Data Model',
-    title: 'Building the Dashboard the Owner Actually Needs',
-    description: 'A live dashboard that answers the real questions: which projects are healthy, which are at risk, and what the business earned this month.',
-  },
-];
 
-// Group by series
-const grouped = posts.reduce((acc, post) => {
-  if (!acc[post.series]) acc[post.series] = [];
-  acc[post.series].push(post);
-  return acc;
-}, {});
-
-const seriesOrder = ['Origins', 'Infrastructure', 'Data Model', 'AI Behaviour', 'Permissions', 'Business Logic', 'Architecture', 'Features'];
+// Newest first
+const sorted = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
 ---
 <Layout title="Build Log">
   <style>
     .intro {
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
     }
 
     .intro h1 {
@@ -172,51 +39,84 @@ const seriesOrder = ['Origins', 'Infrastructure', 'Data Model', 'AI Behaviour', 
       margin: 0;
     }
 
-    .series-block {
-      margin-bottom: 3rem;
+    .post-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
 
-    .series-label {
-      font-family: var(--font-ui);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .post-row {
+    .post-item {
       display: grid;
-      grid-template-columns: 100px 1fr;
+      grid-template-columns: 80px 1fr;
       gap: 0 1.5rem;
-      padding: 0.85rem 0;
+      padding: 1.25rem 0;
       border-bottom: 1px solid var(--border);
-      align-items: baseline;
+      align-items: start;
     }
 
-    .post-row:last-child { border-bottom: none; }
+    .post-item:last-child {
+      border-bottom: none;
+    }
 
     .post-date {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--muted);
       white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    .post-body {
+      min-width: 0;
+    }
+
+    .post-titleline {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
     }
 
     .post-title {
       font-size: 0.95rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--text);
+      flex: 1;
+      min-width: 0;
     }
 
-    .post-title:hover { color: var(--accent); text-decoration: none; }
+    .post-title:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .series-pill {
+      font-family: var(--font-ui);
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      border-radius: 100px;
+      padding: 0.2em 0.7em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      opacity: 0.75;
+    }
+
+    .post-desc {
+      font-size: 0.83rem;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
 
     .draft-tag {
       font-size: 0.7rem;
       color: var(--muted);
-      margin-left: 0.5rem;
+      margin-left: 0.4rem;
       font-family: var(--font-mono);
     }
   </style>
@@ -230,26 +130,25 @@ const seriesOrder = ['Origins', 'Infrastructure', 'Data Model', 'AI Behaviour', 
     </p>
   </div>
 
-  {seriesOrder.map(series => {
-    const items = grouped[series];
-    if (!items) return null;
-    return (
-      <div class="series-block">
-        <div class="series-label">{series}</div>
-        {items.map(post => {
-          const d = new Date(post.date);
-          const label = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
-          return (
-            <div class="post-row">
-              <span class="post-date">{label}</span>
-              <a href={`/vera-blog/posts/${post.slug}`} class="post-title">
+  <ul class="post-list">
+    {sorted.map(post => {
+      const d = new Date(post.date + 'T00:00:00');
+      const label = d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+      return (
+        <li class="post-item">
+          <span class="post-date">{label}</span>
+          <div class="post-body">
+            <div class="post-titleline">
+              <a href={`/vera-blog/posts/${post.slug}/`} class="post-title">
                 {post.title}
                 {post.draft && <span class="draft-tag">[draft]</span>}
               </a>
+              <span class="series-pill">{post.series}</span>
             </div>
-          );
-        })}
-      </div>
-    );
-  })}
+            <p class="post-desc">{post.description}</p>
+          </div>
+        </li>
+      );
+    })}
+  </ul>
 </Layout>

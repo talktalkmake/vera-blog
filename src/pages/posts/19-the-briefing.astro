@@ -1,0 +1,28 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'The Briefing That Replaced the Monday Check-in',
+  date: '2026-03-24',
+  series: 'Features',
+  description: 'The morning summary now answers two questions simultaneously: what am I supposed to be working on, and where do my projects stand?',
+};
+---
+<Post {...meta}>
+<p>The Monday morning check-in exists for one reason. Everyone needs two things at the start of the week: what they are supposed to be working on, and where the work actually stands. The meeting exists because there is no other way to get that information quickly.</p>
+
+<p>VERA's morning summary now does both, automatically, before the working day starts.</p>
+
+<p>For each team member, the briefing includes a table of their active allocations: project, task type, total hours allocated, hours logged so far, and hours remaining. It is not a reminder. It is a statement of record. You know exactly what you are supposed to deliver, and you know exactly how much of it is already done. No conversation required.</p>
+
+<p>For each project manager, the briefing includes every project they manage plotted against an ideal burn-down line. The logic is simple: if a project has a 10-hour budget and a 10-day window, the expectation is one hour per day. On day six, the project should have six hours in it. If it has four, it is two hours behind the line. If it has eight, it is two hours ahead. VERA surfaces the variance directly — ahead, on track, behind, or significantly behind — sorted so the most off-track project is always first.</p>
+
+<p>That is the conversation that used to happen in the Monday meeting. Now it happens before anyone arrives.</p>
+
+<p>The pace forecast sits alongside it. Where linear progress tells you where a project stands today, pace tells you which direction it is moving. A project can be slightly behind but accelerating — closing the gap, unlikely to be a problem. The same variance on a project that has gone quiet for two weeks is a completely different situation. Both pieces of information matter, and the combination of them removes most of the ambiguity a PM would otherwise have to resolve by asking someone directly.</p>
+
+<p>There is a timing argument here that is easy to miss. Burn-down position at nine on Monday morning is actionable. The same number delivered on Friday afternoon is a post-mortem. The briefing works not because the information is new, but because it arrives at the moment when something can still be done about it.</p>
+
+<p>The other thing we decided: the two audiences see different things. Team members see their own allocations only — what they are expected to deliver. Managers see project health across their portfolio. The briefing is not a single message that gets sent to everyone; it is a personalised summary for each person, shaped by what their role actually requires them to do with the information.</p>
+
+<p>That distinction matters. A team member does not need to know that the project is behind the burn-down line. That is the manager's problem to solve. Surfacing it to both would create noise for one and dilute responsibility for the other. The briefing is useful precisely because it gives each person only the information they are in a position to act on.</p>
+</Post>

@@ -1,0 +1,32 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'When Done Means Done',
+  date: '2026-03-25',
+  series: 'AI Behaviour',
+  description: 'A confirmation that nothing happened behind it is worse than no confirmation at all. We fixed the moment where trust breaks.',
+};
+---
+<Post {...meta}>
+<p>There is a specific kind of failure that destroys trust faster than any other. The system tells you it is done. You move on to the next thing. And later you discover that nothing actually happened. The project was never created. The allocation was never made. The hours were never logged. The system lied, and you only found out because you happened to check.</p>
+
+<p>This is worse than an error message. An error message tells you something went wrong. You can fix it. You can try again. A false confirmation tells you everything is fine when it is not. You lose the moment. You lose the context. And by the time you realise, the damage is compounding — decisions have been made on data that does not exist.</p>
+
+<p>We found this happening in VERA. A project manager would say "create a project called Nightshade for Adidas." VERA would ask for the details. The PM would say "Fixed price, 100 hours, $100 an hour." VERA would ask for confirmation. The PM would type "1." And VERA would say done. But nothing had been written. No row in the sheet. No audit trail. No notification to the team. The PM walked away thinking the project existed. It did not.</p>
+
+<p>The root cause was subtle. When a user sends a bare confirmation — "1", "yes", "go ahead" — the system was routing it to a smaller, faster language model. That model saw the conversation history, saw that a project creation had been discussed, and concluded that the work must have already been done. It generated a response saying "done" without ever calling the tool that actually creates the project. It hallucinated the action.</p>
+
+<p>The fix had two parts. First, we forced confirmation inputs to use the more capable model and made it mandatory that the response include a tool call. The API itself now rejects a text-only response on a confirmation turn. If Claude cannot figure out which tool to call, it has to say so — it cannot fake success.</p>
+
+<p>Second, we changed what "done" looks like. Before, a completed action looked the same as every other message — a paragraph of prose with the word "done" somewhere in it. Now it looks like a receipt. A checkmark, a label, and a one-line summary of exactly what changed. You can tell at a glance — without reading a word — that something was written. The visual pattern is distinct from a question, a clarification, or an error. It is unmistakable.</p>
+
+<p>This matters because timeliness is the product. The entire value of VERA is that the data exists the moment the work happens. A false confirmation breaks that promise silently. The PM thinks the project is set up. The team member thinks their allocation is in place. The owner thinks the numbers are current. None of it is true, and nobody knows until something else fails downstream.</p>
+
+<p>The same session uncovered a related problem with allocations. When a PM said "give Sarah 10 hours on Development for Project Nightshade," the system was looking at Sarah's existing allocations on that project and substituting the task type from an earlier allocation. Sarah would get a message saying she had been allocated 10 hours of Strategy when the PM had explicitly said Development. The system was being too clever — inferring when it should have been listening.</p>
+
+<p>We fixed that by drawing a hard line. Task inference — where the system looks at existing allocations to figure out what kind of work you are doing — only applies when you are logging time. When a manager is allocating hours, the task type comes from what the manager said. Period. The system passes the name directly and the server resolves it. No inference, no substitution, no cleverness.</p>
+
+<p>These are not the kind of bugs that show up in a feature list or a demo. They show up three weeks into real usage, when someone trusts the system enough to stop double-checking. That is exactly when a false confirmation does the most damage. The fix is not just technical. It is a commitment: when VERA says done, the work is done. When it shows a receipt, the data is in the sheet. When a manager allocates Development hours, Development is what gets recorded.</p>
+
+<p>Trust is not a feature you ship. It is the accumulation of every moment where the system did exactly what it said it did.</p>
+</Post>

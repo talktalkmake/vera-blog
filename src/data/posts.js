@@ -24,4 +24,5 @@ export const posts = [
   { slug: "18-sheets-formulas-as-code", date: "2026-03-15", series: "Data Model", title: "Building the Dashboard the Owner Actually Needs", description: "A live dashboard that answers the real questions: which projects are healthy, which are at risk, and what the business earned this month." },
   { slug: "19-the-briefing", date: "2026-03-24", series: "Features", title: "The Briefing That Replaced the Monday Check-in", description: "The morning summary now answers two questions simultaneously: what am I supposed to be working on, and where do my projects stand?" },
   { slug: "20-when-done-means-done", date: "2026-03-25", series: "AI Behaviour", title: "When Done Means Done", description: "A confirmation that nothing happened behind it is worse than no confirmation at all. We fixed the moment where trust breaks." },
+  { slug: "21-not-everyone-works-forty-hours", date: "2026-03-29", series: "Features", title: "Not Everyone Works Forty Hours", description: "Capacity planning only works if the system knows how each person actually works. VERA was treating your contractors like full-time employees. It no longer does." },
 ];

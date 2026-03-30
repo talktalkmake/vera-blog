@@ -1,0 +1,26 @@
+---
+import Post from '../../layouts/Post.astro';
+const meta = {
+  title: 'Not Everyone Works Forty Hours',
+  date: '2026-03-29',
+  series: 'Features',
+  description: 'Capacity planning only works if the system knows how each person actually works. VERA was treating your contractors like full-time employees. It no longer does.',
+};
+---
+<Post {...meta}>
+<p>Every agency has the same team structure. A core of full-time people, a layer of contractors who come in for specific projects or specific skills, and occasionally a vendor handling a defined piece of work. Most time tracking tools treat all of them the same way. That's the problem.</p>
+
+<p>When we built capacity tracking into VERA, we made the same mistake. A contractor working three days a week was being evaluated against a forty-hour week. They appeared perpetually overbooked — not because they were, but because the system was measuring them against a standard they'd never agreed to. The overbooking warning fired, and you ignored it, because it was always wrong.</p>
+
+<p>A warning you learn to ignore is worse than no warning at all.</p>
+
+<p>The fix was to make hours-per-week a property of the person, not the team. When you add a contractor to VERA now, it asks how many hours a week they work before creating the record. A three-day contractor at standard hours: twenty-four. A part-time senior designer doing two days a week: sixteen. VERA stores that number against the user and uses it for every capacity calculation that involves them. Full-time employees default to forty without prompting. Vendors use forty as a placeholder, since their cost is governed by agreed fixed payments rather than tracked time.</p>
+
+<p>The derived number — hours per day — follows proportionally. A contractor at twenty-four hours across a five-day week is available for 4.8 hours on any given working day. That changes how their envelopes are evaluated, how their headroom is reported in the morning briefing, and how the overbooking check fires when you try to add new work.</p>
+
+<p>There was a second problem hiding underneath the first. Time off — sick days, leave, PTO — is logged as hours in VERA. When a contractor takes a sick day, it was being recorded at eight hours, because that's what a sick day looks like for a full-time employee. But for a contractor whose day is 4.8 hours, subtracting eight hours was consuming more than a day's capacity and making their availability look worse than it was. In edge cases it could push available hours below zero.</p>
+
+<p>The fix there is a single constraint: no time-off entry can subtract more than the person's actual working day. A sick day logged at eight hours for a 4.8-hour contractor subtracts 4.8. A half-day of PTO logged at four hours passes through unchanged, because it's already within range. The arithmetic now reflects the actual shape of the person's schedule.</p>
+
+<p>Capacity planning is only useful if the numbers are calibrated to reality. An agency where half the team are contractors was always going to break a system that assumed everyone worked the same hours. The numbers are now specific to each person — which is the only way they're worth looking at.</p>
+</Post>
